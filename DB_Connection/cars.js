@@ -8,4 +8,4 @@ const cars = new Schema({
     color:String,
 });
 
-export const CarDetails = mongoose.model("CarDetails",cars);
+export const CarDetails = mongoose.model("cardetail",cars);

@@ -10,44 +10,51 @@ app.use(express.json());
 
 const connectDb = async()=>{
     try{
-        await mongoose.connect('mongodb://127.0.0.1/27017/cars'); 
+        await mongoose.connect('mongodb://127.0.0.1/cars'); 
         console.log("connected to database...!");
     } catch(error){
         console.log("Error db not connected");
     }
 }
 
-// app.get("/hello",async(request,response)=>{
-//     try{
-//         response.send("Hello Pratik");
-//     } catch(error){
-//         response.send(error)
-//     }
-// })
+app.post("/enter",async(request,response)=>{
+    try{
+        const reqData=request.body;
+        const Details = new CarDetails(reqData);
+        await Details.save();
+        response.send({message:'Details Inserted'})
+    } catch(error){
+        response.send({message:"Something went wrong..!"});
+    }
+})
 
-// app.post("/",async(request,response)=>{
-//     try{
-//         const reqData=request.body;
-//         const Details = new CarDetails(reqData);
-//         await Details.save();
-//         response.send({message:'Details Inserted'})
-//     } catch(error){
-//         response.send({message:"Something went wrong..!"});
-//     }
-// })
-
-app.get("/",async(request,response)=>{
+app.get("/details",async(request,response)=>{
     try{
         const Details = await CarDetails.find();
-        response.send({Details:"Details"});
+        response.send({Details:Details});
     } catch(error){
         response.send({message:'Something went wrong..!'});
     }
 })
 
-// app.get("/reads/:Type",async(request,response)=>{
+app.get("/reads/:make",async(request,response)=>{
+    try{
+        const Details = await CarDetails.find({make:request.params.make});
+        if(Details==null){
+            response.send({message:"Details Not Found"});
+        }
+        else{
+            response.send({Details:Details});
+        }
+    } catch(error){
+        response.send({message:'Something went wrong'});
+    }
+})
+
+
+// app.get("/reads/:price",async(request,response)=>{
 //     try{
-//         const Details = await CarDetails.findOne({machno:request.params.machno});
+//         const Details = await MachineDetails.findOne({price:request.params.price});
 //         if(Details==null){
 //             response.send({message:"Details Not Found"});
 //         }
@@ -59,23 +66,23 @@ app.get("/",async(request,response)=>{
 //     }
 // })
 
-// app.delete("/deletes/:make",async(request,response)=>{
-//     try{
-//         await CarDetails.deleteOne({machno:request.params.machno});
-//         response.send({message:'Student deleted'});
-//     } catch(error){
-//         response.send({message:'something went wrong...!'})
-//     }
-// })
+app.delete("/deletes/:model",async(request,response)=>{
+    try{
+        await CarDetails.deleteOne({model:request.params.model});
+        response.send({message:'Car deleted'});
+    } catch(error){
+        response.send({message:'something went wrong...!'})
+    }
+})
 
-// app.put("/puts/:machno",async(request,response)=>{
-//     try{
-//         await CarDetails.updateOne({machno:request.params.machno},request.body);
-//         response.send({message:"ok updated"})
-//     } catch(error){
-//         response.send('something went again wrong')
-//     }
-// })
+app.put("/puts/:price",async(request,response)=>{
+    try{
+        await CarDetails.updateOne({price:request.params.price},request.body);
+        response.send({message:"ok updated"})
+    } catch(error){
+        response.send('something went again wrong')
+    }
+})
 
 
 app.listen(5001,()=>{
