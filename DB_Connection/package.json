@@ -1,13 +1,13 @@
 {
-  "name": "backend",
+  "name": "new-folder",
   "version": "1.0.0",
-  "description": "Cars Database",
-  "main": "index.js",
+  "description": "",
   "type": "module",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jayesh",
+  "author": "jay",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

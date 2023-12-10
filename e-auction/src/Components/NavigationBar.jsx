@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Button } from 'react-bootstrap'; 
 import { Link } from 'react-router-dom';
 
@@ -14,7 +13,9 @@ export function NavigationBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#features">Home</Nav.Link>
-            <Nav.Link href="#pricing">About us</Nav.Link>
+            <Link to="/AddCar" className="nav-link">
+              Add Car
+            </Link>
             <Nav.Link href="#pricing">Collaborators</Nav.Link>
           </Nav>
           <Nav>

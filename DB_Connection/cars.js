@@ -1,11 +1,15 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from 'mongoose';
 
-const cars = new Schema({
-    make:String,
-    model:String,
-    p_year:Number,
-    price:Number,
-    color:String,
+const car = new Schema({
+    make: String,
+    model: String,
+    p_year: Number,
+    price: Number,
+    color: String,
+    s_name: String,
+    s_num: Number,
+    s_add: String,
+    s_city: String
 });
 
-export const CarDetails = mongoose.model("cardetail",cars);
+export const CarDetails = mongoose.model('CarDetail', car);

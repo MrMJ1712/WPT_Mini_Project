@@ -1,7 +1,9 @@
 import express, { response } from 'express';
-import mongoose from 'mongoose'
-import { CarDetails } from './cars.js';
-import cors from 'cors'
+import mongoose from 'mongoose';
+import { CarDetails } from './Cars.js'
+import cors from 'cors';
+
+
 const app=express();
 app.use(cors())
 
@@ -18,9 +20,14 @@ const connectDb = async()=>{
 
 app.post("/enter",async(request,response)=>{
     try{
-        const reqData=request.body;
-        const Details = new CarDetails(reqData);
-        await Details.save();
+        const reqData = request.body;
+        console.log(reqData);
+        const Det = new CarDetails(reqData);
+        console.log(Det);
+        await Det.save();
+        // const Details = new CarDetails(reqData);
+        // console.log(Details);
+        // await Details.save();
         response.send({message:'Details Inserted'})
     } catch(error){
         response.send({message:"Something went wrong..!"});
@@ -36,9 +43,9 @@ app.get("/details",async(request,response)=>{
     }
 })
 
-app.get("/reads/:make",async(request,response)=>{
+app.get("/reads/:price",async(request,response)=>{
     try{
-        const Details = await CarDetails.find({make:request.params.make});
+        const Details = await CarDetails.find({price:request.params.price});
         if(Details==null){
             response.send({message:"Details Not Found"});
         }
@@ -84,7 +91,7 @@ app.put("/puts/:price",async(request,response)=>{
 })
 
 
-app.listen(5001,()=>{
+app.listen(5500,()=>{
     console.log('Server is running on port 4900');
     connectDb();
 });
