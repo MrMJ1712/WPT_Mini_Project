@@ -2,7 +2,6 @@ import express, { response } from 'express';
 import mongoose from 'mongoose'
 import { CarDetails } from './cars.js';
 import cors from 'cors'
-
 const app=express();
 app.use(cors())
 
