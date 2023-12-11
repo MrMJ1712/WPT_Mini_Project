@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import { fetchCars } from "../Services/Cars_info";
 import { Header } from "./Header";
 
@@ -28,25 +28,29 @@ export function CarList() {
             <Table className="mt-5">
                 <thead>
                     <tr>
-                        <th>Model</th>
-                        <th>Price</th>
-                        <th>Purchase Year</th>
-                        <th>City</th>
+                        <td>Model</td>
+                        <td>Price</td>
+                        <td>Purchase Year</td>
+                        <td>City</td>
                     </tr>
                 </thead>
                 <tbody>
-                        {
-                            cars.map((c)=>{
-                                return(
-                                    <tr>
-                                        <td>{c.model}</td>
-                                        <td>{c.price}</td>
-                                        <td>{c.p_year}</td>
-                                        <td>{c.s_city}</td>
-                                    </tr>
-                                )
-                            })
-                        }
+                    {
+                        cars.map((c) => {
+                            return (
+                                <tr>
+                                    <td>{c.model}</td>
+                                    <td>{c.price}</td>
+                                    <td>{c.p_year}</td>
+                                    <td>{c.s_city}</td>
+                                    <td>
+                                        <Button variant="danger" >Delete</Button> &nbsp;&nbsp;&nbsp;
+                                        <Button variant="primary" >Edit</Button>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
                 </tbody>
             </Table>
         </Container>

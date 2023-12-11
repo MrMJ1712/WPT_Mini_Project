@@ -11,7 +11,7 @@ app.use(express.json());
 
 const connectDb = async()=>{
     try{
-        await mongoose.connect('mongodb://127.0.0.1/cars'); 
+        await mongoose.connect('mongodb://127.0.0.1/carsdb'); 
         console.log("connected to database...!");
     } catch(error){
         console.log("Error db not connected");

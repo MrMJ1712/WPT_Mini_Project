@@ -8,26 +8,29 @@ export function NavigationBar() {
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">E-Auction</Navbar.Brand>
+        <Navbar.Brand href="home">E-Auction</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Home</Nav.Link>
-            <Link to="/AddCar" className="nav-link">
+            <Nav.Link href="home">Home</Nav.Link>
+            <Link to="/addcar" className="nav-link">
               Add Car
             </Link>
-            <Nav.Link href="#pricing">Collaborators</Nav.Link>
+            <Link to="/aboutus" className="nav-link">
+              About Us
+            </Link>
+            <Nav.Link href="aboutus">Collaborators</Nav.Link>
           </Nav>
           <Nav>
 
             <Link to="/login">
               <Button variant="danger" className="me-2">
                 Log In
-              </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
-              <Link to="/SignUp">
+              </Button></Link>
+              <Link to="/signup">
               <Button variant="danger" className="me-2">
                 Sign Up 
-              </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+              </Button></Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -1,7 +1,10 @@
 import React from "react";
+import NavigationBar from "./NavigationBar";
 
 export function AboutUs(){
-  return(    
+  return(  
+    <>  
+    {/* <NavigationBar/> */}
     <section className="section-white">
       <div className="container">
         <div className="row">
@@ -66,6 +69,7 @@ export function AboutUs(){
         </div>
       </div>
     </section>
+    </>
   )
 }
 
