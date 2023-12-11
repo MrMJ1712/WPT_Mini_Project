@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  MDBFooter,
-  MDBContainer,
-  MDBCol,
-  MDBRow,
-  MDBIcon,
-  MDBBtn
-} from 'mdb-react-ui-kit';
+import { MDBFooter, MDBContainer, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
+// import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+// import "fortawesome/fontawesome-free/css/all.min.css"
 
 export default function App() {
   return (
@@ -17,27 +12,28 @@ export default function App() {
             floating
             className='m-1'
             style={{ backgroundColor: '#3b5998' }}
-            href='#!'
+            href='www.facebook.com'
             role='button'
+            icon='fab fa-facebook-f'
           >
-            <MDBIcon fab icon='facebook-f' />
+            <MDBIcon fab icon='fab fa-facebook-f' />
           </MDBBtn>
 
           <MDBBtn
             floating
             className='m-1'
             style={{ backgroundColor: '#55acee' }}
-            href='#!'
+            href='www.twitter.com'
             role='button'
           >
-            <MDBIcon fab icon='twitter' />
+            <MDBIcon fab icon='twitter' /> <MDBIcon fab icon='twitter' />
           </MDBBtn>
 
           <MDBBtn
             floating
             className='m-1'
             style={{ backgroundColor: '#dd4b39' }}
-            href='#!'
+            href='www.google.com'
             role='button'
           >
             <MDBIcon fab icon='google' />
@@ -46,7 +42,7 @@ export default function App() {
             floating
             className='m-1'
             style={{ backgroundColor: '#ac2bac' }}
-            href='#!'
+            href='www.instagram.com'
             role='button'
           >
             <MDBIcon fab icon='instagram' />
@@ -56,7 +52,7 @@ export default function App() {
             floating
             className='m-1'
             style={{ backgroundColor: '#0082ca' }}
-            href='#!'
+            href='in.linkedin.com'
             role='button'
           >
             <MDBIcon fab icon='linkedin-in' />
@@ -66,7 +62,7 @@ export default function App() {
             floating
             className='m-1'
             style={{ backgroundColor: '#333333' }}
-            href='#!'
+            href='github.com'
             role='button'
           >
             <MDBIcon fab icon='github' />
@@ -77,7 +73,7 @@ export default function App() {
       <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
         © 2020 Copyright:
         <a className='text-white' href='https://mdbootstrap.com/'>
-          MDBootstrap.com
+          E-Auction.com
         </a>
       </div>
     </MDBFooter>

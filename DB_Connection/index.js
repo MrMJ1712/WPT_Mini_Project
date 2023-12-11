@@ -11,7 +11,7 @@ app.use(express.json());
 
 const connectDb = async()=>{
     try{
-        await mongoose.connect('mongodb://127.0.0.1/carsdb'); 
+        await mongoose.connect('mongodb://127.0.0.1/cars'); 
         console.log("connected to database...!");
     } catch(error){
         console.log("Error db not connected");
@@ -34,7 +34,7 @@ app.post("/enter",async(request,response)=>{
     }
 })
 
-app.get("/details",async(request,response)=>{
+app.get("/detail",async(request,response)=>{
     try{
         const Details = await CarDetails.find();
         response.send({Details:Details});
@@ -72,7 +72,7 @@ app.get("/reads/:price",async(request,response)=>{
 //     }
 // })
 
-app.delete("/deletes/:model",async(request,response)=>{
+app.delete("/delete/:model",async(request,response)=>{
     try{
         await CarDetails.deleteOne({model:request.params.model});
         response.send({message:'Car deleted'});
@@ -91,7 +91,7 @@ app.put("/puts/:price",async(request,response)=>{
 })
 
 
-app.listen(5500,()=>{
+app.listen(5550,()=>{
     console.log('Server is running on port 4900');
     connectDb();
 });

@@ -16,10 +16,12 @@ export function NavigationBar() {
             <Link to="/addcar" className="nav-link">
               Add Car
             </Link>
+            <Link to="/carlist" className="nav-link">
+              Car List
+            </Link>
             <Link to="/aboutus" className="nav-link">
               About Us
             </Link>
-            <Nav.Link href="aboutus">Collaborators</Nav.Link>
           </Nav>
           <Nav>
 
