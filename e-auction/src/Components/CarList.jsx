@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { Button, Container, Modal, Table } from "react-bootstrap";
 import { deleteCar, fetchCars } from "../Services/Cars_info";
 import { Header } from "./Header";
-
+import { useNavigate } from "react-router-dom";
 
 export function CarList() {
 
     const [cars, setCars] = useState([])
     const [showDialog, setShowDialog] = useState(false);
     const [selectedModel,setSelectedModel] = useState("");
-   
+    const navigate = useNavigate();
 
 
     const openModalDialog = () => {
@@ -39,7 +39,6 @@ export function CarList() {
             console.log(error);
         }
     }
-
 
     return (
         <Container>
@@ -73,7 +72,9 @@ export function CarList() {
                                                 openModalDialog();
                                                 setSelectedModel(c.model)
                                             }} >Delete</Button> &nbsp;&nbsp;&nbsp;
-                                            <Button variant="primary" >Edit</Button>
+                                            <Button variant="primary" onClick={()=>{
+                                                navigate(`/edit/${c.model}`)
+                                            }} >Edit</Button>
                                         </td>
                                     </tr>
                                 )
@@ -92,7 +93,6 @@ export function CarList() {
                     <Button variant="success" onClick={() => {
                         handleCarDelete(selectedModel);
                         closeModalDialog();
-                        
                     }}>
                         Yes
                     </Button>

@@ -22,12 +22,9 @@ app.post("/enter",async(request,response)=>{
     try{
         const reqData = request.body;
         console.log(reqData);
-        const Det = new CarDetails(reqData);
-        console.log(Det);
-        await Det.save();
-        // const Details = new CarDetails(reqData);
-        // console.log(Details);
-        // await Details.save();
+        const Details = new CarDetails(reqData);
+        console.log(Details);
+        await Details.save();
         response.send({message:'Details Inserted'})
     } catch(error){
         response.send({message:"Something went wrong..!"});
@@ -43,9 +40,9 @@ app.get("/detail",async(request,response)=>{
     }
 })
 
-app.get("/reads/:price",async(request,response)=>{
+app.get("/detail/:model",async(request,response)=>{
     try{
-        const Details = await CarDetails.find({price:request.params.price});
+        const Details = await CarDetails.find({model:request.params.model});
         if(Details==null){
             response.send({message:"Details Not Found"});
         }

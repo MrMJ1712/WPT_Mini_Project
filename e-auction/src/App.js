@@ -9,6 +9,7 @@ import SignUpPage from "./Components/Signup";
 import { AboutUs } from './Components/AboutUs';
 import { CarList } from './Components/CarList';
 import { AddCar } from './Components/AddCar';
+import EditCar from './Components/EditCar';
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage/>}></Route>
           <Route path="/aboutus" element={<AboutUs/>}></Route>
           <Route path="/addcar" element={<AddCar/>}></Route>
+          <Route path="/edit/:model" element={<EditCar/>}></Route>
         </Routes>
         {/* <AboutUs></AboutUs> */}
       </div>

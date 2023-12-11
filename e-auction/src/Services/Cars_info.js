@@ -24,5 +24,13 @@ export async function deleteCar(model){
         return response.data;
     } catch (error) {
         console.log(error)
-    }
-}
+    } }
+
+export async function fetchCarByModel(model){
+    try {
+        const response = await axios.get(`http://127.0.0.1:5550/detail${model}`)
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    } }
+    
