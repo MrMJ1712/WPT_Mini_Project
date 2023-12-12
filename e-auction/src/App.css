@@ -96,19 +96,6 @@
 	font-style:italic;
 }
 
-.team-info::after {
-    background: #008aff;
-    background: linear-gradient(135deg, #6B02FF 0%, #985BEF 100%);
-    background: linear-gradient(bottom right, #6B02FF, #985BEF);
-    background: linear-gradient(bottom right, #008aff, #1ad2fd);
-    background: linear-gradient(135deg, #6B02FF 0%, #985BEF 100%);
-    display: inline-block;
-    vertical-align: middle;
-    content: "";
-    width: 50px;
-    height: 3px; 
-}
-
 .team-img{
 	max-width: 140px;
 	padding: 6px 6px;
