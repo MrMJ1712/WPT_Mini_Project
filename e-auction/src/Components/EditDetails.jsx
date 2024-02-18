@@ -5,7 +5,7 @@ import { useParams,useNavigate } from 'react-router-dom';
 
 export function EditDeails() {
     const navigate = useNavigate();
-    const [cars, setCars] = useState({ make: '', model: '', p_year: '', price: '', color: '', s_name: '', s_num: '', s_add: '', s_city: '', email: '' });
+    const [cars, setCars] = useState({ make: '', model: '', p_year: '', price: '', color: '', s_name: '', s_num: '',email:'', s_add: '', s_city: '', email: '' });
     const params = useParams();
 
     const populateCarsState = async () => {
@@ -139,6 +139,18 @@ export function EditDeails() {
                             value={cars[0] ? cars[0].s_num : ''} 
                             placeholder="Enter Contact Number" 
                             name="s_num" 
+                            onChange={(e) => handleChange(e, 0)} 
+                        />
+                    </Form.Group>
+                </Col>
+                <Col lg={4}>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Your Email</Form.Label>
+                        <Form.Control 
+                            type="text" 
+                            value={cars[0] ? cars[0].email : ''} 
+                            placeholder="Enter your Email" 
+                            name="email" 
                             onChange={(e) => handleChange(e, 0)} 
                         />
                     </Form.Group>

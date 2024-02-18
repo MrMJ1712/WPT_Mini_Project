@@ -101,7 +101,7 @@ export const AddCar = () => {
                 <Col lg={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" value={formData.s_Email} placeholder="Enter Email" name="email" onChange={handleChange} />
+                        <Form.Control type="email" value={formData.email} placeholder="Enter Email" name="email" onChange={handleChange} />
                     </Form.Group>
                 </Col>
                 <Col lg={4}>

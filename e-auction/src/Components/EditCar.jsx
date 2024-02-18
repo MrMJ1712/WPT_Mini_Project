@@ -100,6 +100,12 @@ export const EditCar = () => {
                             </Col>
                             <Col lg={4}>
                                 <Form.Group className="mb-3">
+                                    <Form.Label>Your Contact Number</Form.Label>
+                                    <Form.Control type="number" value={formData.email} placeholder="Enter Contact Number" name="s_num" onChange={handleChange} />
+                                </Form.Group>
+                            </Col>
+                            <Col lg={4}>
+                                <Form.Group className="mb-3">
                                     <Form.Label>Your Address</Form.Label>
                                     <Form.Control type="text" value={formData.s_add} placeholder="Enter your address" name="s_add" onChange={handleChange} />
                                 </Form.Group>

@@ -1,67 +1,110 @@
-import React from 'react';
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBInput,
-  MDBIcon,
-  MDBCheckbox
-}
-from 'mdb-react-ui-kit';
+import React, { useState } from 'react';
+import { registerdata } from '../Services/Cars_info';
+import { useNavigate } from "react-router-dom";
 
-export function SignUpPage() {
+const SignUpPage = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    pwd: '',
+    confirmPassword: ''
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const result = await registerdata(formData);
+      navigate(`/login`);
+    } catch (error) {
+      console.log(error);
+    }
+    console.log('Form submitted with data:', formData);
+  };
+
   return (
-    <MDBContainer fluid>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
+        <div className="card text-black m-5" style={{ borderRadius: '25px' }}>
+          <div className="card-body">
+            <div className="row">
+              <div className="col-md-10 col-lg-6 order-2 order-lg-1 d-flex flex-column align-items-center">
+                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-      <MDBCard className='text-black m-5' style={{borderRadius: '25px'}}>
-        <MDBCardBody>
-          <MDBRow>
-            <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-center'>
+                <div className="mb-3">
+                  <input
+                    type='text'
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    className='form-control'
+                    placeholder='Username'
+                    required
+                  />
+                </div>
 
-              <p classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                <div className="mb-3">
+                  <input
+                    type='email'
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className='form-control'
+                    placeholder='Your Email'
+                    required
+                  />
+                </div>
 
-              <div className="d-flex flex-row align-items-center mb-4 ">
-                <MDBIcon fas icon="user me-3" size='lg'/>
-                <MDBInput label='Your Name' id='form1' type='text' className='w-100'/>
+                <div className="mb-3">
+                  <input
+                    type='password'
+                    name="pwd"
+                    value={formData.pwd}
+                    onChange={handleChange}
+                    className='form-control'
+                    placeholder='Password'
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <input
+                    type='password'
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    className='form-control'
+                    placeholder='Confirm Password'
+                    required
+                  />
+                </div>
+
+                <button type="submit" className='btn btn-success mb-4'>Register</button>
+                <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
+                <p className="mb-0">already have an account?</p>
+                <button className="btn btn-outline-primary mx-2" onClick={() => {navigate('/login')}}>
+                  Login in
+                </button>
+              </div>
               </div>
 
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="envelope me-3" size='lg'/>
-                <MDBInput label='Your Email' id='form2' type='email'/>
+              <div className="col-md-10 col-lg-6 order-1 order-lg-2 d-flex align-items-center">
+                <img src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp' className="img-fluid" alt="Registration"/>
               </div>
-
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="lock me-3" size='lg'/>
-                <MDBInput label='Password' id='form3' type='password'/>
-              </div>
-
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="key me-3" size='lg'/>
-                <MDBInput label='Repeat your password' id='form4' type='password'/>
-              </div>
-
-              <div className='mb-4'>
-                <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
-              </div>
-
-              <MDBBtn className='mb-4' size='lg'>Register</MDBBtn>
-
-            </MDBCol>
-
-            <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
-              <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp' fluid/>
-            </MDBCol>
-
-          </MDBRow>
-        </MDBCardBody>
-      </MDBCard>
-
-    </MDBContainer>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   );
-}
+};
 
 export default SignUpPage;

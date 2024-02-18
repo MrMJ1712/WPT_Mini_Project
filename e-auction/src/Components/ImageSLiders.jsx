@@ -3,6 +3,8 @@ import { Carousel } from "react-bootstrap";
 import Img1 from './Images/Img_1.jpg';
 import Img2 from './Images/Img_2.jpg';
 import Img3 from './Images/Img_3.jpg';
+import NavigationBar from "./NavigationBar";
+import FooterBar from './Components/FooterBar';
 const imgStyle = {
   objectFit: 'cover',  
   maxHeight: '650px', 
@@ -10,6 +12,8 @@ const imgStyle = {
 
 export function ImgSlider() {
   return (
+    <>
+    <NavigationBar/>
     <Carousel>
     <Carousel.Item>
       <img
@@ -36,7 +40,10 @@ export function ImgSlider() {
       />
     </Carousel.Item>
   </Carousel>
+  <FooterBar/>
+    </>
+   
   );
 }
 
-export default ImgSlider;
+export default ImgSlider;
