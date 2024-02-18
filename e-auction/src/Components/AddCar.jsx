@@ -4,7 +4,7 @@ import { Header } from './Header';
 import { saveCars } from '../Services/Cars_info';
 
 export const AddCar = () => {
-    const [formData, setFormData] = useState({ make: "", model: "", p_year: "", price: "", color: "", s_name: "", s_num: "", s_add: "", s_city: "" });
+    const [formData, setFormData] = useState({ make: "", model: "", p_year: "", price: "", color: "",email:"", s_name: "", s_num: "", s_add: "", s_city: "" });
     const [isSubmitted,setIsSubmitted] = useState(false);
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -29,6 +29,7 @@ export const AddCar = () => {
             p_year: '',
             price: '',
             color: '',
+            email:'',
             s_name: '',
             s_num: '',
             s_add: '',
@@ -46,13 +47,19 @@ export const AddCar = () => {
                 <Col lg={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>Make Of Vehicle</Form.Label>
-                        <Form.Control type="text" value={isSubmitted?formData.make:null} placeholder="Enter Make Of Your Vehicle" name="make" onKeyUp={handleChange} />
+                        <Form.Control 
+                            type="text" 
+                            value={formData.make} 
+                            placeholder="Enter Make Of Your Vehicle" 
+                            name="make" 
+                            onChange={handleChange} 
+                        />
                     </Form.Group>
                 </Col>
                 <Col lg={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>Model Of Your Vehicle</Form.Label>
-                        <Form.Control type="text" value={isSubmitted?formData.model:null} placeholder="Enter Model Of your Car" name="model" onKeyUp={handleChange} />
+                        <Form.Control type="text" value={formData.model} placeholder="Enter Model Of your Car" name="model" onChange={handleChange} />
                     </Form.Group>
                 </Col>
             </Row>
@@ -60,13 +67,13 @@ export const AddCar = () => {
                 <Col lg={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>Purchase year of your vehicle</Form.Label>
-                        <Form.Control type="number" value={isSubmitted?formData.p_year:null} placeholder="Enter Purchase year" name="p_year" onKeyUp={handleChange} />
+                        <Form.Control type="number" value={formData.p_year} placeholder="Enter Purchase year" name="p_year" onChange={handleChange} />
                     </Form.Group>
                 </Col>
                 <Col lg={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>Desired price for your vehicle</Form.Label>
-                        <Form.Control type="number" value={isSubmitted?formData.price:null} placeholder="Enter price" name="price" onKeyUp={handleChange} />
+                        <Form.Control type="number" value={formData.price} placeholder="Enter price" name="price" onChange={handleChange} />
                     </Form.Group>
                 </Col>
             </Row>
@@ -74,13 +81,13 @@ export const AddCar = () => {
                 <Col lg={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>Color of your vehicle</Form.Label>
-                        <Form.Control type="text" value={isSubmitted?formData.color:null} placeholder="Enter Color of your vehicle" name="color" onKeyUp={handleChange} />
+                        <Form.Control type="text" value={formData.color} placeholder="Enter Color of your vehicle" name="color" onChange={handleChange} />
                     </Form.Group>
                 </Col>
                 <Col lg={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>Enter your name</Form.Label>
-                        <Form.Control type="text" value={isSubmitted?formData.s_name:null} placeholder="Enter price" name="s_name" onKeyUp={handleChange} />
+                        <Form.Control type="text" value={formData.s_name} placeholder="Enter price" name="s_name" onChange={handleChange} />
                     </Form.Group>
                 </Col>
             </Row>
@@ -88,19 +95,25 @@ export const AddCar = () => {
                 <Col lg={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>Your Contact Number</Form.Label>
-                        <Form.Control type="number" value={isSubmitted?formData.s_num:null} placeholder="Enter Contact Number" name="s_num" onKeyUp={handleChange} />
+                        <Form.Control type="number" value={formData.s_num} placeholder="Enter Contact Number" name="s_num" onChange={handleChange} />
+                    </Form.Group>
+                </Col>
+                <Col lg={4}>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" value={formData.s_Email} placeholder="Enter Email" name="email" onChange={handleChange} />
                     </Form.Group>
                 </Col>
                 <Col lg={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>Your Address</Form.Label>
-                        <Form.Control type="text" value={isSubmitted?formData.s_add:null} placeholder="Enter your address" name="s_add" onKeyUp={handleChange} />
+                        <Form.Control type="text" value={formData.s_add} placeholder="Enter your address" name="s_add" onChange={handleChange} />
                     </Form.Group>
                 </Col>
                 <Col lg={4}>
                     <Form.Group className="mb-3">
                         <Form.Label>Your City</Form.Label>
-                        <Form.Control type="text" value={isSubmitted?formData.s_city:null} placeholder="Enter your city" name="s_city" onKeyUp={handleChange} />
+                        <Form.Control type="text" value={formData.s_city} placeholder="Enter your city" name="s_city" onChange={handleChange} />
                     </Form.Group>
                 </Col>
             </Row>

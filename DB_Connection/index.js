@@ -40,9 +40,9 @@ app.get("/detail",async(request,response)=>{
     }
 })
 
-app.get("/detail/:model",async(request,response)=>{
+app.get("/detail/:_id",async(request,response)=>{
     try{
-        const Details = await CarDetails.find({model:request.params.model});
+        const Details = await CarDetails.find({_id:request.params._id});
         if(Details==null){
             response.send({message:"Details Not Found"});
         }
@@ -55,38 +55,23 @@ app.get("/detail/:model",async(request,response)=>{
 })
 
 
-// app.get("/reads/:price",async(request,response)=>{
-//     try{
-//         const Details = await MachineDetails.findOne({price:request.params.price});
-//         if(Details==null){
-//             response.send({message:"Details Not Found"});
-//         }
-//         else{
-//             response.send({Details:Details});
-//         }
-//     } catch(error){
-//         response.send({message:'Something went wrong'});
-//     }
-// })
-
-app.delete("/delete/:model",async(request,response)=>{
+app.delete("/delete/:_id",async(request,response)=>{
     try{
-        await CarDetails.deleteOne({model:request.params.model});
+        await CarDetails.deleteOne({_id:request.params._id});
         response.send({message:'Car deleted'});
     } catch(error){
         response.send({message:'something went wrong...!'})
     }
 })
 
-app.put("/puts/:price",async(request,response)=>{
+app.put("/puts/:_id",async(request,response)=>{
     try{
-        await CarDetails.updateOne({price:request.params.price},request.body);
-        response.send({message:"ok updated"})
+        await CarDetails.updateOne({_id:request.params._id},request.body);
+        response.send({message:"ok updated data"})
     } catch(error){
         response.send('something went again wrong')
     }
 })
-
 
 app.listen(5550,()=>{
     console.log('Server is running on port 4900');

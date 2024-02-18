@@ -33,4 +33,13 @@ export async function fetchCarByModel(model){
     } catch (error) {
         console.log(error);
     } }
+
+export async function updateCarByModel(updateData,model){
+    try {
+        const response = await axios.put(`http://127.0.0.1:5550/puts/${model}`,updateData)
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    } }
+
     

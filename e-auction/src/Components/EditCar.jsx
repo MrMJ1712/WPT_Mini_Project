@@ -7,11 +7,14 @@ import { fetchCarByModel } from '../Services/Cars_info';
 export const EditCar = () => {
 
     const params = useParams()
-    const [formData, setFormData] = useState({ make: "", model: "", p_year: "", price: "", color: "", s_name: "", s_num: "", s_add: "", s_city: "" });
+    const [formData, setFormData] = useState({ make: "", model: "", p_year: "", price: "", color: "", email: "", s_name: "", s_num: "", s_add: "", s_city: "" });
     const [isSubmitted, setIsSubmitted] = useState(false);
+
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-    }
+        console.log("New value:", e.target.value);
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,24 +24,24 @@ export const EditCar = () => {
         } catch (error) {
             console.log(error)
         }
-        setFormData({ make: '', model: '', p_year: '', price: '', color: '', s_name: '', s_num: '', s_add: '', s_city: '', });
+        setFormData({ make: '', model: '', p_year: '', price: '', color: '', s_name: '', s_num: '', s_add: '', s_city: '', email: '' });
     };
 
     const populateCarState = async () => {
         try {
-            const result = await fetchCarByModel(params.model)
-            setFormData(result.Details)            // setCars(result.Details)
-            // console.log(result.Details)
-            // console.log(formData)
-            // console.log(cars)
+            const result = await fetchCarByModel(params.model);
+            const data = Array.isArray(result) && result.length > 0 ? result[0] : {};
+            setFormData(result.Details);
+            console.log(result.Details)
+            console.log(formData)
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     useEffect(() => {
         populateCarState();
-    }, [])
+    }, []);
 
     return (
         <>
@@ -112,7 +115,6 @@ export const EditCar = () => {
                             <Col lg={3}>
                                 <Button variant="primary" type="submit">Register</Button>
                             </Col>
-
                         </Row>
                     </Form> : <p>No Relevant Car Data Found</p>}
                 <Row className='mt-3'>

@@ -10,9 +10,7 @@ import { AboutUs } from './Components/AboutUs';
 import { CarList } from './Components/CarList';
 import { AddCar } from './Components/AddCar';
 import EditCar from './Components/EditCar';
-
-
-
+import EditDetails from './Components/EditDetails';
 
 function App() {
   return (
@@ -28,7 +26,8 @@ function App() {
           <Route path="/signup" element={<SignUpPage/>}></Route>
           <Route path="/aboutus" element={<AboutUs/>}></Route>
           <Route path="/addcar" element={<AddCar/>}></Route>
-          <Route path="/edit/:model" element={<EditCar/>}></Route>
+          {/* <Route path="/edit/:model" element={<EditCar/>}></Route> */}
+          <Route path="/edit/:_id" element={<EditDetails/>}></Route>
         </Routes>
         {/* <AboutUs></AboutUs> */}
       </div>

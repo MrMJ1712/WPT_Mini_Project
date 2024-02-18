@@ -51,7 +51,8 @@ export function CarList() {
                             <td>Price</td>
                             <td>Purchase Year</td>
                             <td>Seller name</td>
-                            <td>Seller Contact</td>
+                            <td>Email</td>
+                            {/* <td>Seller Contact</td> */}
                             <td>City</td>
                             <td></td>
                         </tr>
@@ -65,15 +66,16 @@ export function CarList() {
                                         <td>{c.price}</td>
                                         <td>{c.p_year}</td>
                                         <td>{c.s_name}</td>
-                                        <td>{c.s_num}</td>
+                                        <td>{c.email}</td>
+                                        {/* <td>{c.s_num}</td> */}
                                         <td>{c.s_city}</td>
                                         <td>
                                             <Button variant="danger" onClick={() => {
                                                 openModalDialog();
-                                                setSelectedModel(c.model)
+                                                setSelectedModel(c._id)
                                             }} >Delete</Button> &nbsp;&nbsp;&nbsp;
                                             <Button variant="primary" onClick={()=>{
-                                                navigate(`/edit/${c.model}`)
+                                                navigate(`/edit/${c._id}`)
                                             }} >Edit</Button>
                                         </td>
                                     </tr>
