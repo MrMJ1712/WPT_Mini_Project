@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import {Form, Button, Container, Row, Col } from "react-bootstrap";
 import { fetchCarByModel,updateCarByModel } from "../Services/Cars_info";
 import { useParams,useNavigate } from 'react-router-dom';
+import FooterBar from "./FooterBar"
+import NavigationBar from "./NavigationBar";
 
 export function EditDeails() {
     const navigate = useNavigate();
@@ -49,6 +51,8 @@ export function EditDeails() {
     
 
     return (
+        <>
+        <NavigationBar/>
 <Container>
     {cars ?
         <Form onSubmit={handleSubmit}>
@@ -190,6 +194,8 @@ export function EditDeails() {
         <p>No Relevant Car Data Found</p>
     }                   
 </Container>
+<FooterBar/>
+</>
 
     );
 }

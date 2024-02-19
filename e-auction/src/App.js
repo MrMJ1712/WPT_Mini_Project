@@ -9,14 +9,13 @@ import SignUpPage from "./Components/Signup";
 import { AboutUs } from './Components/AboutUs';
 import { CarList } from './Components/CarList';
 import { AddCar } from './Components/AddCar';
-import EditCar from './Components/EditCar';
 import EditDetails from './Components/EditDetails';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      {/* <NavigationBar/> */}
+   {/* <NavigationBar/> */}
       <div>
         <Routes>
           <Route path="/" element={<LoginPage />}></Route>

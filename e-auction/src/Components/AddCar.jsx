@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import { Header } from './Header';
 import { saveCars } from '../Services/Cars_info';
+import NavigationBar from './NavigationBar';
+import FooterBar from "./FooterBar"
 
 export const AddCar = () => {
     const [formData, setFormData] = useState({ make: "", model: "", p_year: "", price: "", color: "",email:"", s_name: "", s_num: "", s_add: "", s_city: "" });
@@ -39,6 +41,7 @@ export const AddCar = () => {
 
     return (
         <> 
+        <NavigationBar/>
         <Container>
         <Header text="Add New Car And Seller Info" align="centre"></Header>
 
@@ -130,6 +133,7 @@ export const AddCar = () => {
                 </Col>
             </Row>
             </Container>
+            <FooterBar/>
         </>
     );
 }

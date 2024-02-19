@@ -3,6 +3,8 @@ import { Button, Container, Modal, Table } from "react-bootstrap";
 import { deleteCar, fetchCars } from "../Services/Cars_info";
 import { Header } from "./Header";
 import { useNavigate } from "react-router-dom";
+import FooterBar from "./FooterBar"
+import NavigationBar from "./NavigationBar";
 
 export function CarList() {
 
@@ -41,6 +43,8 @@ export function CarList() {
     }
 
     return (
+        <>
+        <NavigationBar/>
         <Container>
             <Header text="List of all cars"></Header>
             {cars.length != 0 ?
@@ -105,5 +109,7 @@ export function CarList() {
             </Modal>
 
         </Container>
+        <FooterBar/>
+        </>
     )
 }
