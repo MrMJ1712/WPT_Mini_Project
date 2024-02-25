@@ -4,6 +4,7 @@ import { logindata } from '../Services/Cars_info';
 
 export function LoginPage() {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [formData, setFormData] = useState({
     username: '',
@@ -18,19 +19,22 @@ export function LoginPage() {
     });
   };
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log('Form submitted with username:', formData.username, 'and password:', formData.pwd);
     try {
-      const result = await logindata(formData.username);
-      console.log( result.Details[0].username)
-      console.log( result.Details[0].pwd)
-      if( result.Details[0].username === formData.username )
-      {
+      const result = await logindata(formData.username, formData.pwd);
+      if (result) {
         navigate('/home');
+      } else {
+        setErrorMessage('Invalid username or password');
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 5000); // Timeout duration in milliseconds (5 seconds in this example)
       }
     } catch (error) {
       console.log(error);
+      setErrorMessage('An error occurred. Please try again later.');
     }
   };
 
@@ -39,6 +43,7 @@ export function LoginPage() {
       <form onSubmit={handleSubmit}>
         <div className="card text-black m-5" style={{ borderRadius: '25px' }}>
           <div className="card-body">
+            {errorMessage && <p className="text-danger">{errorMessage}</p>}
             <div className="row">
               <div className="col-md-10 col-lg-6 order-2 order-lg-1 d-flex flex-column align-items-center">
                 <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login in</p>
@@ -83,6 +88,7 @@ export function LoginPage() {
           </div>
         </div>
       </form>
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
     </div>
   );
 }

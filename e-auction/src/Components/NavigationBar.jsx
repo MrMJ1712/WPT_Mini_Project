@@ -27,12 +27,12 @@ export function NavigationBar() {
 
             <Link to="/login">
               <Button variant="danger" className="me-2">
-                Log In
+                Log out
               </Button></Link>
-              <Link to="/signup">
+              {/* <Link to="/signup">
               <Button variant="danger" className="me-2">
                 Sign Up 
-              </Button></Link>
+              </Button></Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

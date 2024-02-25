@@ -43,18 +43,19 @@ export async function updateCarByModel(updateData,model){
     } }
 
     
-    export async function registerdata(LoginData) {
-        try {
-            const response = await axios.post("http://127.0.0.1:5550/register", LoginData)
-            return response.data;
-        } catch (error) {
-            console.log(error)
-        }
+export async function registerdata(LoginData) {
+    try {
+        const response = await axios.post("http://127.0.0.1:5550/register", LoginData)
+        return response.data;
+    } catch (error) {
+        console.log(error)
     }
-    export async function logindata(data){
-        try {
-            const response = await axios.get(`http://127.0.0.1:5550/login/${data}`)
-            return response.data;
-        } catch (error) {
-            console.log(error);
-        } }
+}
+export async function logindata(username,pwd){
+    try {
+        const response = await axios.get(`http://127.0.0.1:5550/login/${username}/${pwd}`)
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    } }
+
